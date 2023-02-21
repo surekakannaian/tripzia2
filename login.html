@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+   <style>
+           *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #ffffff;
+}
+body{
+    background: linear-gradient(to right, rgb(30, 137, 199),rgb(184, 16, 133));
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: auto;
+    margin-top: 5%;
+    padding: 2%;
+    border: 1px solid black;
+}
+input{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #111;
+    margin: 5% 0;
+    padding: 1%;
+}
+button{
+    color: #111;
+    margin-top: 5%;
+    padding: 2%;
+}
+small{
+    color: rgb(158, 14, 14);
+    visibility: hidden;
+}
+h2{
+    text-align: center;
+    margin-top: 5%;
+}
+@media screen and (max-width:700px){
+    form{
+    width: 50%;
+    margin-top: 20%;
+}
+}
+   </style>
+</head>
+
+<body>
+    <h2>Login to view your page! </h2>
+    <form action="websie.html" onsubmit=" return inputcheck()" id="login">
+        <label for="">Username or Email</label>
+        <input type="text" id="name">
+        <small id="error1">ERROE</small>
+        <label for="">Password</label>
+        <input type="password" id="password">
+        <small id="error2">ERROE</small>
+        <button style="width: 25%; margin: auto;">Login</button>
+        </form>
+</body>
+<script>
+      const Name=document.getElementById('name');
+        const password=document.getElementById('password');
+        var small1=document.getElementById('error1');
+        var small2=document.getElementById('error2');
+    const passname=localStorage.getItem('uname');
+    const passpassword=localStorage.getItem('pass');
+    function inputcheck(){
+            const nameValue=Name.value.trim();
+           const passwordValue=password.value.trim();
+           if(nameValue==''){
+            small1.innerHTML='fill this field';
+            small1.style.visibility='visible';
+            return false;
+           }
+           else if(nameValue!=passname){
+            small1.innerHTML='incorrect';
+            small1.style.visibility='visible';
+            return false;
+           }
+           else{
+            small1.style.visibility='hidden';
+           }
+           if(passwordValue==''){
+            small2.innerHTML='fill this field';
+            small2.style.visibility='visible';
+            return false;
+           }
+           else if(passwordValue!=passpassword){
+            small2.innerHTML='incorrect';
+            small2.style.visibility='visible';
+            return false;
+           }
+           else{
+            small2.style.visibility='hidden';
+           }}
+</script>
+</html>
